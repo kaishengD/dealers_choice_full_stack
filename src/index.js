@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM  from 'react-dom'
-
+import App from '../client/component/main'
 const root = document.querySelector('#root')
-ReactDOM.render(<hr />,root)
+ReactDOM.render(<App />,root)
