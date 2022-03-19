@@ -1,16 +1,14 @@
-const Express = require('express')
+const express = require('express')
 const {db,syncAndSeed} = require('./db/db')
-
-const app = Express();
+const path = require('path');
+const app = express();
 const port = 3000;
 app.use('/api',require('./api'))
+app.use('/dist', express.static(path.join(__dirname,'dist')));
+app.get('/',(req,res)=>{
 
-app.get('/',async(req,res,next)=>{
-    try{
-        res.send('hello')
-    }catch(err){
-        next(err)
-    }
+    res.sendFile(path.join(__dirname,'index.html'))
+   
 })
 const init = async()=>{
     try{

@@ -5,15 +5,25 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon server"
+    "start:dev": "nodemon server",
+    "build:dev": "webpack --watch --mode=development"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
-    "sequelize": "^6.17.0"
+    "react-dom": "^17.0.2",
+    "sequelize": "^6.17.0",
+    "webpack": "^5.70.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.2"
   }
 }
