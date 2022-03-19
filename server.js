@@ -3,7 +3,7 @@ const {db,syncAndSeed} = require('./db/db')
 
 const app = Express();
 const port = 3000;
-
+app.use('/api',require('./api'))
 
 app.get('/',async(req,res,next)=>{
     try{
