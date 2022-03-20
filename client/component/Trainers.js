@@ -7,14 +7,10 @@ class _Trainers extends React.Component{
     }
     render(){
         const {trainers} = this.props
-        console.log(trainers)
         return(
-            <div>
-                {trainers.map((trainer)=>{
-                    return <li>{trainer.name}</li>
-                })}
-            </div>
-    
+            trainers.map((trainer)=>{
+                return <li key={trainer.id}>{trainer.name}</li>
+            })
         )
     }
 }
@@ -24,7 +20,6 @@ const Trainers = connect(state => state,
     return{
         load: async()=>{
             const trainers = (await axios.get('/api/trainers')).data
-            console.log(trainers)
             dispatch({type:'Load_Trainers',trainers})
         }
     }
