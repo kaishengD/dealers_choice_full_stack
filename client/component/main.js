@@ -1,10 +1,23 @@
 //main page App
-
 import React from 'react';
-import reactDom from 'react-dom';
+import Nav from './Nav';
+import Trainers from './Trainers';
+import { HashRouter as Router, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class App extends React.Component{
+class _App extends React.Component{
     render(){
-        return (<hr />)
+        const {trainers, pokemons} = this.props
+        return (
+            <Router>
+                <div id = 'main'>
+                    <Nav trainers={trainers} pokemons={pokemons}/>
+                    <Route path = '/trainers' component = {Trainers}></Route>
+                </div>
+            </Router>
+        )
     }
 }
+
+const App = connect(state=>state)(_App)
+export default App
