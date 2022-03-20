@@ -1,15 +1,10 @@
 const pg = require('pg')
 const Sequelize = require('sequelize')
 const db = new Sequelize('postgres://localhost/pokemon_trainers')
-const {UUID,UUIDV4,STRING} = require('sequelize')
+const {UUID,UUIDV4,STRING, HasMany} = require('sequelize')
 
 //define two models
 const Trainer = db.define('trainers',{
-    id:{
-        type:UUID,
-        defaultValue: UUIDV4,
-        primaryKey:true
-    },
     name:{
         type:Sequelize.STRING,
         allowNull: false
@@ -17,11 +12,6 @@ const Trainer = db.define('trainers',{
 })
 
 const Pokemon = db.define('pokemons',{
-    id:{
-        type:UUID,
-        defaultValue: UUIDV4,
-        primaryKey:true
-    },
     name:{
         type:Sequelize.STRING,
         allowNull: false
@@ -37,8 +27,9 @@ const Catch = db.define('catches',{
 })
 
 Catch.belongsTo (Trainer);
+Trainer.hasMany(Catch);
 Catch.belongsTo (Pokemon);
-
+Pokemon.hasMany(Catch);
 const syncAndSeed = async()=>{
     await db.sync({force:true});
     const [satoshi,misty,brock] = await Promise.all(

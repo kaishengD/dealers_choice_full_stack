@@ -3,6 +3,7 @@ import React from 'react';
 import Nav from './Nav';
 import Trainers from './Trainers';
 import Pokemons from './Pokemons';
+import PokemonsForTrainer from './PokemonForTrainer';
 import { HashRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -11,13 +12,14 @@ class _App extends React.Component{
         this.props.load();
     }
     render(){
-        const {trainers, pokemons} = this.props
+        const {trainers,pokemons} = this.props
         return (
             <Router>
                 <div id = 'main'>
                     <Nav trainers={trainers} pokemons={pokemons}/>
-                    <Route path = '/trainers' component = {Trainers}></Route>
+                    <Route exact path = '/trainers' component = {Trainers}></Route>
                     <Route path = '/pokemons' component = {Pokemons}></Route>
+                    <Route exact path = '/trainers/:id' component = {PokemonsForTrainer}></Route>
                 </div>
             </Router>
         )
@@ -32,6 +34,7 @@ const App = connect(state=>state,
             const pokemons = (await axios.get('/api/pokemons')).data
             dispatch({type:'Load_Trainers',trainers})
             dispatch({type:'Load_Pokemons',pokemons})
+            
         }
     }
 })(_App)

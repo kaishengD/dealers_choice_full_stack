@@ -5,6 +5,7 @@ class _Pokemons extends React.Component{
     componentDidMount(){
         this.props.load();
     }
+
     render(){
         const {pokemons} = this.props
         return(

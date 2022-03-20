@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const Nav = ({trainers, pokemons})=>{
+import { connect } from 'react-redux';
+
+const Nav = ({trainers,pokemons})=>{
     return(
         <div>
             <h2>Welcome to my Pokemon World</h2>
@@ -14,4 +16,4 @@ const Nav = ({trainers, pokemons})=>{
     ) 
 }
 
-export default Nav
+export default connect(state => state)(Nav)

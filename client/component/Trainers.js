@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 class _Trainers extends React.Component{
     componentDidMount(){
         this.props.load();
@@ -9,7 +10,7 @@ class _Trainers extends React.Component{
         const {trainers} = this.props
         return(
             trainers.map((trainer)=>{
-                return <li key={trainer.id}>{trainer.name}</li>
+                return <li key={trainer.id}><Link to={`/trainers/${trainer.id}`}>{trainer.name}</Link></li>
             })
         )
     }
