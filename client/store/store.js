@@ -1,4 +1,6 @@
-import { createStore } from "redux";
+import axios from "axios";
+import { createStore, applyMiddleware } from "redux";
+import thunks from 'redux-thunk'
 const store = createStore((state = {trainers:[],pokemons:[],pokemonsfortrainer:[]},action)=>{
 
     if(action.type === 'Load_Trainers'){
@@ -16,6 +18,10 @@ const store = createStore((state = {trainers:[],pokemons:[],pokemonsfortrainer:[
     }
     if(action.type === 'Remove_a_Pokemon'){
         const pokemons = state.pokemons.filter(pokemon=> pokemon.id !== action.pokemon.id )
+        state = {...state, pokemons:pokemons};
+    }
+    if(action.type === 'Create_Pokemon'){
+        const pokemons = [...state.pokemons,action.pokemon]
         state = {...state, pokemons:pokemons};
     }
     return state;

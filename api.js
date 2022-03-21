@@ -18,6 +18,14 @@ router.delete('/pokemons/:id',async(req,res,next)=>{
         next(err)
     }
 })
+router.post('/pokemons',async(req,res,next)=>{
+    try{
+        const pokemon = await Pokemon.create(req.body)
+        res.status(201).send(pokemon)
+    }catch(err){
+        next(err)
+    }
+})
 
 router.get('/trainers',async(req,res,next)=>{
     try{
