@@ -1,7 +1,7 @@
 const pg = require('pg')
 const Sequelize = require('sequelize')
 const db = new Sequelize('postgres://localhost/pokemon_trainers')
-const {UUID,UUIDV4,STRING, HasMany} = require('sequelize')
+const {STRING, HasMany} = require('sequelize')
 
 //define two models
 const Trainer = db.define('trainers',{

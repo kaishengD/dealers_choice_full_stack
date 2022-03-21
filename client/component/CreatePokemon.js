@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import {addPokemon} from '../store/store'
+
 // const createPokemon = async(name)=>{
 //     const pokemon = (await axios.post('/api/pokemons',{name})).data
 

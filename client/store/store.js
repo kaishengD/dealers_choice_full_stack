@@ -1,6 +1,5 @@
-import axios from "axios";
-import { createStore, applyMiddleware } from "redux";
-import thunks from 'redux-thunk'
+import { createStore } from "redux";
+
 const store = createStore((state = {trainers:[],pokemons:[],pokemonsfortrainer:[]},action)=>{
 
     if(action.type === 'Load_Trainers'){
