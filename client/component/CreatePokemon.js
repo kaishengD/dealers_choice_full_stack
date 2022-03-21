@@ -2,10 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 
-// const createPokemon = async(name)=>{
-//     const pokemon = (await axios.post('/api/pokemons',{name})).data
-
-// }
 class CreatePokemon extends React.Component{
     constructor(){
         super(),

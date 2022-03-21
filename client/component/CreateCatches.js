@@ -54,11 +54,12 @@ class CreateCatches extends React.Component{
     }
 }
 
-const mapDispatch = (dispatch)=>{
+const mapDispatch = (dispatch,{history})=>{
     return{
         createCatch: async(tId,pId)=>{
             const newCatch = (await axios.post('/api/catches',{trainerId:tId,pokemonId:pId})).data
-            dispatch({type:'Create_Catches',newCatch})
+            dispatch({type:'Create_Catches',newCatch},history)
+            history.push(`/trainers/${tId}`)
         }
     }
 }
