@@ -26,6 +26,14 @@ router.post('/pokemons',async(req,res,next)=>{
         next(err)
     }
 })
+router.post('/trainers',async(req,res,next)=>{
+    try{
+        const trainer = await Trainer.create(req.body)
+        res.status(201).send(trainer)
+    }catch(err){
+        next(err)
+    }
+})
 router.post('/catches',async(req,res,next)=>{
     try{
         const newCatch = await Catch.create(req.body)

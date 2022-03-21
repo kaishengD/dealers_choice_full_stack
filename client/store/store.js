@@ -19,6 +19,10 @@ const store = createStore((state = {trainers:[],pokemons:[],pokemonsfortrainer:[
         const pokemons = [...state.pokemons,action.pokemon]
         state = {...state, pokemons:pokemons};
     }
+    if(action.type === 'Create_Trainer'){
+        const trainers = [...state.trainers,action.trainer]
+        state = {...state, trainers:trainers};
+    }
     if(action.type === 'Create_Catch'){
         const catchactions = [...state.pokemonsfortrainer,action.newCatch]
         state = {...state, pokemonsfortrainer:catchactions};

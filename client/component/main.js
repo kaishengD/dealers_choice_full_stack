@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import CreatePokemon from './CreatePokemon';
 import CreateCatches from './CreateCatches';
+import CreateTrainer from './CreateNewTrainer';
 class _App extends React.Component{
     componentDidMount(){
         this.props.load();
@@ -19,7 +20,7 @@ class _App extends React.Component{
             <Router>
                 <div id = 'main'>
                     <Nav trainers={trainers} pokemons={pokemons}/>
-   
+                    <Route exact path= '/' component={CreateTrainer}></Route>
                     <Route exact path = '/trainers' component = {CreateCatches}></Route>
                     <Route exact path = '/trainers' component = {Trainers}></Route>
                     <Route path = '/pokemons' component = {CreatePokemon}></Route>

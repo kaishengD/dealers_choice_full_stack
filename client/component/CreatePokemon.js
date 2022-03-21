@@ -33,7 +33,6 @@ null,
 (dispatch)=>{
     return{
         add:async(pokemonName)=>{
-            console.log(pokemonName)
             const pokemon = (await axios.post('/api/pokemons',{name:pokemonName})).data
             dispatch({type:'Create_Pokemon',pokemon})
         }
