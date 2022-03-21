@@ -20,7 +20,7 @@ class _App extends React.Component{
                 <div id = 'main'>
                     <Nav trainers={trainers} pokemons={pokemons}/>
    
-                    <Route path = '/trainers' component = {CreateCatches}></Route>
+                    <Route exact path = '/trainers' component = {CreateCatches}></Route>
                     <Route exact path = '/trainers' component = {Trainers}></Route>
                     <Route path = '/pokemons' component = {CreatePokemon}></Route>
                     <Route path = '/pokemons' component = {Pokemons}></Route>
