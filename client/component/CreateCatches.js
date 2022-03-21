@@ -7,7 +7,7 @@ const CreateCatches =()=>{
         <form onSubmit={(ev)=>{
             ev.preventDefault();
         }}>
-            <div>
+            <div id='catchRow'>
                 <option>--select trainers</option><option>--select trainers</option>
                 <button type='submit'>Catch!</button>
             </div>
