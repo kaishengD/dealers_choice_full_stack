@@ -1,6 +1,23 @@
 const router = require('express').Router();
 const {models:{Trainer,Pokemon,Catch}} = require('./db/db')
-
+router.delete('/catches/:id',async(req,res,next)=>{
+    try{
+        const catchaction = await Catch.findByPk(req.params.id)
+        await catchaction.destroy();
+        res.sendStatus(204)
+    }catch(err){
+        next(err)
+    }
+})
+router.delete('/pokemons/:id',async(req,res,next)=>{
+    try{
+        const pokemon = await Pokemon.findByPk(req.params.id)
+        await pokemon.destroy();
+        res.sendStatus(204)
+    }catch(err){
+        next(err)
+    }
+})
 
 router.get('/trainers',async(req,res,next)=>{
     try{
@@ -10,6 +27,15 @@ router.get('/trainers',async(req,res,next)=>{
         next(err)
     }
 })
+router.get('/catches',async(req,res,next)=>{
+    try{
+        const catches = await Catch.findAll()
+        res.send(catches)
+    }catch(err){
+        next(err)
+    }
+})
+
 router.get('/trainers/:id',async(req,res,next)=>{
     try{
         const catches = await Catch.findAll({

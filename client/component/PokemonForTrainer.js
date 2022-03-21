@@ -1,20 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios';
+import store from '../store/store';
+const release = async(catchaction)=>{
+    await axios.delete(`/api/catches/${catchaction.id}`)
+    store.dispatch({type:'Release_a_Pokemon',catchaction})
+}
 class _PokemonsForTrainer extends React.Component{    
     componentDidMount(){
         const id = this.props.match.params.id
         this.props.load(id);
-    }
-    delete(){
-        console.log('thisis delete')
     }
     render(){
         const {pokemonsfortrainer} = this.props
         return(
             <div>
                 {pokemonsfortrainer.map((pokemon)=>{
-                    return <li key={pokemon.pokemon.id}>{pokemon.pokemon.name}<button onClick={this.delete}>x</button></li>
+                    return <li key={pokemon.pokemon.id}>{pokemon.pokemon.name}
+                        <button onClick={()=> release(pokemon)}>release</button>
+                    </li>
                 })}
             </div>
 
@@ -25,8 +29,8 @@ class _PokemonsForTrainer extends React.Component{
 const PokemonsForTrainer = connect(state=>state,
 (dispatch)=>{
     return{
-        load: async(id)=>{
-            const pokemonsfortrainer = (await axios.get(`/api/trainers/${id}`)).data
+        load:async(trainerid)=>{
+            const pokemonsfortrainer = (await axios.get(`/api/trainers/${trainerid}`)).data
             dispatch({type:'Load_Pokemons_For_Trainers',pokemonsfortrainer})
         }
     }

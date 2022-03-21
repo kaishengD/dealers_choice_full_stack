@@ -9,7 +9,7 @@ const Nav = ({trainers,pokemons})=>{
             <div id='navBar'>
                 <Link to ='/'>Main</Link>
                 <Link to ='/trainers'>Trainers({trainers.length})</Link>
-                <Link to ='/pokemons'>Pokemons({pokemons.length})</Link>
+                <Link to ='/pokemons'>Pokemons Found({pokemons.length})</Link>
             </div>
         </div>
         

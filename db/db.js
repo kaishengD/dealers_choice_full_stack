@@ -18,13 +18,7 @@ const Pokemon = db.define('pokemons',{
     }
 })
 
-const Catch = db.define('catches',{
-    id:{
-        type: UUID,
-        defaultValue: UUIDV4,
-        primaryKey:true
-    }
-})
+const Catch = db.define('catches')
 
 Catch.belongsTo (Trainer);
 Trainer.hasMany(Catch);
