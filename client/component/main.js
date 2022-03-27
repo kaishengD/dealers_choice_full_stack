@@ -15,11 +15,10 @@ class _App extends React.Component{
         this.props.load();
     }
     render(){
-        const {trainers,pokemons} = this.props
         return (
             <Router>
                 <div id = 'main'>
-                    <Nav trainers={trainers} pokemons={pokemons}/>
+                    <Nav />
                     <Route exact path= '/' component={CreateTrainer}></Route>
                     <Route exact path = '/trainers' component = {CreateCatches}></Route>
                     <Route exact path = '/trainers' component = {Trainers}></Route>
